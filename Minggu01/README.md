@@ -7,13 +7,15 @@
 
 # 1. Dwonload python
 Download installer python di situs https://www.python.org/download. 
-Di sini kita menggunakan python versi 3.9.1. Bila Anda bingung yang mana linknya, silahkan klik saja link
+Di sini kita menggunakan python versi 3.9.1. Bila Anda bingung yang mana linknya, silahkan klik saja link yang ada
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu01/Screenshot_1.png"/>
 
 # 2. Instal python 
 Tunggu hingga proses download selesai. Setelah selesai, 
 buka folder tempat python terdownload kemudian instal.
 
 # 3. Jalankan python
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu01/Screenshot_3.png"/>
 
 # Menggunakan Interpreter Python
 Interpreter beroperasi mirip seperti shell Unix: ketika dipanggil dengan masukan bawaan yang terhubung ke perangkat tty, 
