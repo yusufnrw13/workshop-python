@@ -5,7 +5,7 @@
 
 # Instalasi python
 
-# 1. Dwonload python
+# 1. Download python
 Download installer python di situs https://www.python.org/download. 
 Di sini kita menggunakan python versi 3.9.1. Bila Anda bingung yang mana linknya, silahkan klik saja link yang ada
 <img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu01/Screenshot_1.png"/>
