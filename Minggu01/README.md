@@ -37,4 +37,5 @@ Ketika perintah dibaca dari tty, interpreter dikatakan dalam interactive mode. D
 berikutnya dengan primary prompt, biasanya tiga tanda lebih besar dari (>>>); untuk garis lanjutan, 
 interpreter meminta dengan secondary prompt, secara bawaan tiga titik (...). Interpreter mencetak 
 pesan selamat datang yang menyatakan nomor versinya dan pemberitahuan hak cipta sebelum mencetak prompt pertama:
+
 <img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu01/Screenshot_3.png"/>
