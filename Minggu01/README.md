@@ -15,7 +15,7 @@ Tunggu hingga proses download selesai. Setelah selesai,
 buka folder tempat python terdownload kemudian instal.
 
 # 3. Jalankan python
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu01/Screenshot_3.png"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu01/Screenshot_2.png"/>
 
 # Menggunakan Interpreter Python
 Interpreter beroperasi mirip seperti shell Unix: ketika dipanggil dengan masukan bawaan yang terhubung ke perangkat tty, 
