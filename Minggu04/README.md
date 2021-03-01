@@ -1,117 +1,76 @@
 # workshop-python
-<h2>Minggu 03</h2>
+<h2>Minggu 04</h2>
 <b>Nama : Yusuf Nur Rahman Wahid</b></br>
 <b>NIM : 185410039</b>
 
-# Struktur Data Python
+# Modul Pada Python
+Jika Anda berhenti dari interpreter Python dan memasukkannya lagi, definisi yang Anda buat (fungsi dan variabel) akan hilang. Karena itu, jika Anda ingin menulis program yang agak lebih panjang, Anda lebih baik menggunakan editor teks untuk menyiapkan input bagi penerjemah dan menjalankannya dengan file itu sebagai input. Ini dikenal sebagai membuat script. Saat program Anda menjadi lebih panjang, Anda mungkin ingin membaginya menjadi beberapa file untuk pengelolaan yang lebih mudah. Anda mungkin juga ingin menggunakan fungsi praktis yang Anda tulis di beberapa program tanpa menyalin definisi ke setiap program.
 
-# 1. Lebih Lanjut tentang Daftar Lists
-Tipe data daftar list memiliki beberapa metode lagi. Berikut ini semua metode dari objek daftar list:
--	list.append(x)
-Tambahkan item ke akhir daftar list. Setara dengan a[len(a):] = [x].
--	list.extend(iterable)
-Perpanjang daftar list dengan menambahkan semua item dari iterable. Setara dengan a[len(a):] = iterable.
--	list.insert(i, x)
-Masukkan item pada posisi tertentu. Argumen pertama adalah indeks elemen sebelum memasukkan, jadi a.insert(0, x) memasukkan di bagian depan daftar list, dan a.insert(len(a), x) sama dengan a.append(x).
--	list.remove(x)
-Hapus item pertama dari daftar list yang nilainya sama dengan x. Ini memunculkan ValueError jika tidak ada item seperti itu.
--	list.pop([i])
-Hapus item pada posisi yang diberikan dalam daftar, dan kembalikan. Jika tidak ada indeks yang ditentukan, a.pop() menghapus dan mengembalikan item terakhir dalam daftar. 
--	list.clear()
-Hapus semua item dari daftar list. Setara dengan del a[:].
--	list.index(x[, start[, end]])
-Kembalikan indeks berbasis nol dalam daftar item pertama yang nilainya sama dengan x. Menimbulkan ValueError jika tidak ada item seperti itu.
--	list.count(x)
-Kembalikan berapa kali x muncul dalam daftar.
--	list.sort(*, key=None, reverse=False)
-Urutkan item daftar di tempat (argumen dapat digunakan untuk mengurutkan ubahsuaian customization, lihat sorted() untuk penjelasannya).
--	list.reverse()
-Balikkan elemen daftar list di tempatnya.
--	list.copy()
-Kembalikan salinan daftar list yang dangkal. Setara dengan a[:].
-Contoh yang menggunakan sebagian besar metode daftar list:
+Modul adalah file yang berisi definisi dan pernyataan Python. Nama berkas adalah nama modul dengan akhiran .py diakhirnya. Dalam sebuah modul, nama modul (sebagai string) tersedia sebagai nilai variabel global __name__. Misalnya, gunakan editor teks favorit Anda untuk membuat bernama bernama fibo.py di direktori saat ini dengan konten berikut
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar1.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar1.jpg"/>
 
-# 1.1. Menggunakan Daftar Lists sebagai Tumpukan Stacks
-Metode daftar membuatnya sangat mudah untuk menggunakan daftar lust sebagai tumpukan stack, di mana elemen terakhir yang 
-ditambahkan adalah elemen pertama yang diambil ("last-in, first-out"). Untuk menambahkan item ke atas tumpukan, gunakan append(). 
-Untuk mengambil item dari atas tumpukan, gunakan pop() tanpa indeks eksplisit. Sebagai contoh:
+# 1. Lebih lanjut tentang Modul
+Modul dapat berisi pernyataan yang dapat dieksekusi serta definisi fungsi. Pernyataan ini dimaksudkan untuk menginisialisasi modul. Mereka dieksekusi hanya first kali nama modul ditemui dalam pernyataan impor. 1 (Mereka juga dijalankan jika file dieksekusi sebagai skrip.) Modul dapat mengimpor modul lain. Biasanya, tetapi tidak diperlukan untuk menempatkan semua pernyataan import di awal modul (atau skrip, dalam hal ini). Nama-nama modul yang diimpor ditempatkan di tabel simbol global modul impor.
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar2.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar2.jpg"/>
 
+Ini mengimpor semua nama kecuali yang dimulai dengan garis bawah (_). dalam kebanyakan kasus, programmer Python tidak menggunakan fasilitas ini karena ia memperkenalkan sekumpulan nama yang tidak diketahui ke dalam interpreter, mungkin menyembunyikan beberapa hal yang sudah Anda definisikan_
 
-# 1.2. Menggunakan Daftar Lists sebagai Antrian Queues
-Dimungkinkan juga untuk menggunakan daftar sebagai antrian, di mana elemen pertama yang ditambahkan adalah elemen 
-pertama yang diambil ("first-in, first-out"); namun, daftar tidak efisien untuk tujuan ini. Sementara menambahkan 
-dan muncul dari akhir daftar cepat, melakukan memasukkan atau muncul dari awal daftar lambat 
-(karena semua elemen lain harus digeser satu).
+# a. Mengoperasikan modul sebagai skrip
+Ketika Anda mengoperasikan modul Python dengan
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar3.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar3.jpg"/>
 
+kode dalam modul akan dieksekusi, sama seperti jika Anda mengimpornya, tetapi dengan __name__ diatur ke "__main__". Itu berarti bahwa dengan menambahkan kode ini di akhir modul Anda
 
-# 1.3. Daftar List Comprehensions
-Pemahaman daftar list comprehensions menyediakan cara singkat untuk membuat daftar. Aplikasi umum adalah membuat daftar 
-baru di mana setiap elemen adalah hasil dari beberapa operasi yang diterapkan pada setiap anggota dari urutan lain atau iterable, 
-atau untuk membuat urutan elemen-elemen yang memenuhi kondisi tertentu.
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar4.jpg"/>
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar4.jpg"/>
+# b. Jalur Pencarian Modul
+Ketika sebuah modul bernama spam diimpor, interpreter pertama-tama mencari modul bawaan dengan nama itu. Jika tidak ditemukan, ia kemudian mencari berkas bernama spam.py dalam daftar direktori yang diberikan oleh variabel sys.path. sys.path diinisialisasi dari lokasi ini:
+-	Direktori yang berisi skrip masukan (atau direktori saat ini ketika tidak ada file ditentukan).
+-	PYTHONPATH (daftar nama direktori, dengan sintaksis yang sama dengan variabel shell PATH).
+-	Bawaan yang bergantung pada instalasi.
 
-# 1.4. Pemahaman Daftar List Comprehensions Bersarang
-Ekspresi awal dalam pemahaman daftar list comprehension dapat berupa ekspresi acak arbitrary, termasuk pemahaman daftar list comprehension lainnya.
+# c. Berkas Python "Compiled"
+Untuk mempercepat memuat modul, Python menyimpan cache versi terkompilasi dari setiap modul di direktori __pycache__ dengan nama module. version.pyc, di mana versi menyandikan format berkas terkompilasi; umumnya berisi nomor versi Python. Misalnya, dalam rilis CPython 3.3 versi yang dikompilasi dari spam.py akan di-cache sebagai __pycache__/spam.cpython-33.pyc. Konvensi penamaan ini memungkinkan modul yang dikompilasi dari rilis yang beragam dan versi Python yang berbeda untuk hidup berdampingan.
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar5.jpg"/>
+Python tidak memeriksa cache dalam dua keadaan. Pertama, selalu mengkompilasi ulang dan tidak menyimpan hasil untuk modul yang dimuat langsung dari baris perintah. Kedua, itu tidak memeriksa cache jika tidak ada modul sumber. Untuk mendukung distribusi non-sumber (dikompilasi saja), modul yang dikompilasi harus ada di direktori sumber, dan tidak boleh ada modul sumber.
 
-# 2. Pernyataan del
-Ada cara untuk menghapus item dari daftar yang diberikan indeksnya, bukan nilainya: pernyataan del. Ini berbeda dari metode pop() yang mengembalikan nilai.
-Pernyataan del juga dapat digunakan untuk menghapus irisan dari daftar list atau menghapus seluruh daftar list 
-(yang kami lakukan sebelumnya dengan menetapkan daftar kosong pada slice).
+# 2. Modul Standar
+Python dilengkapi dengan pustaka modul standar, yang dijelaskan dalam dokumen terpisah, Referensi Pustaka Python ("Library Reference" selanjutnya). Beberapa modul dibangun ke dalam interpreter; ini menyediakan akses ke operasi yang bukan bagian dari inti bahasa tetapi tetap dibangun, baik untuk efisiensi atau untuk menyediakan akses ke sistem operasi primitif seperti pemanggilan sistem. Himpunan modul tersebut adalah opsi konfigurasi yang juga tergantung pada platform yang mendasarinya. Sebagai contoh, modul winreg hanya disediakan pada sistem Windows. Satu modul tertentu patut mendapat perhatian: sys, yang dibangun ke dalam setiap interpreter Python. Variabel sys.ps1 dan sys.ps2 menentukan string yang digunakan sebagai prompt primer dan sekunder.
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar6.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar5.jpg"/>
 
-# 3. Tuples and Urutan Sequences
-Kita melihat bahwa daftar list dan string memiliki banyak properti yang sama, seperti operasi pengindeksan dan pemotongan. 
-Mereka adalah dua contoh tipe data sequence (lihat Sequence Types --- list, tuple, range). Karena Python adalah bahasa yang berkembang, 
-tipe data urutan lainnya dapat ditambahkan. Ada juga tipe data urutan standar lain: tuple.
+Kedua variabel ini hanya ditentukan jika interpreter dalam mode interaktif.
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar7.jpg"/>
+# 3. Fungsi dir()
+Fungsi bawaan dir() digunakan untuk mencari tahu nama-nama yang ditentukan oleh modul. Ia mengembalikan list string yang diurutkan:
 
-# 4. Himpunan Set
-Python juga menyertakan tipe data untuk sets. Himpunan atau Set adalah koleksi yang tidak terurut tanpa elemen duplikat. 
-Penggunaan dasar termasuk pengujian keanggotaan dan menghilangkan entri duplikat. Atur objek juga mendukung operasi matematika 
-seperti penyatuan union, persimpangan intersection, perbedaan difference, dan perbedaan simetris.
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar6.jpg"/>
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar8.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar7.jpg"/>
 
-# 5. Kamus Dictionaries
-Tipe data lain yang berguna yang dibangun ke dalam Python adalah dictionary (lihat Mapping Types --- dict). 
-Kamus dictionary kadang-kadang ditemukan dalam bahasa lain sebagai "assosiative memories" atau "assosiative array".
-Ini adalah contoh kecil menggunakan kamus dictionary:
+dir() tidak mencantumkan nama fungsi dan variabel bawaan. Jika Anda ingin daftar itu, mereka didefinisikan dalam modul standar builtins:
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar9.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar8.jpg"/>
 
-# 6. Teknik Perulangan
-Saat mengulang kamus dictionaries, kunci key dan nilai value terkait dapat diambil pada saat yang sama menggunakan metode items().
+# 4. Paket
+Paket adalah cara penataan namespace modul Python dengan menggunakan "dotted module names". Sebagai contoh, nama modul A.B menetapkan submodule bernama B dalam sebuah paket bernama A. Sama seperti penggunaan modul menyelamatkan penulis modul yang berbeda dari harus khawatir tentang nama variabel global masing-masing, penggunaan nama modul bertitik menyelamatkan penulis paket multi-modul seperti NumPy atau Pillow dari harus khawatir tentang nama modul masing-masing .
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar10.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar9.jpg"/>
 
-# 7. Lebih lanjut tentang Kondisi
-Kondisi yang digunakan dalam pernyataan while dan if dapat berisi operator apa pun, bukan hanya perbandingan.
-Operator perbandingan in dan not in memeriksa apakah suatu nilai terjadi (tidak terjadi) secara berurutan. 
-Operator is dan is not membandingkan apakah dua objek benar-benar objek yang sama; ini hanya penting untuk objek yang
-dapat diubah seperti daftar list. Semua operator pembanding memiliki prioritas yang sama, yang lebih rendah daripada semua operator numerik.
+Saat mengimpor paket, Python mencari melalui direktori pada sys.path mencari subdirektori paket.
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar11.jpg"/>
+# a. Mengimpor * Dari Paket
+Satu-satunya solusi adalah bagi pembuat paket untuk memberikan indeks paket secara eksplisit. Pernyataan import menggunakan konvensi berikut: jika suatu paket punya kode __init __.py yang mendefinisikan daftar bernama __all__, itu diambil sebagai daftar nama modul yang harus diimpor ketika from package import * ditemukan. Terserah pembuat paket untuk tetap memperbarui daftar ini ketika versi baru dari paket dirilis. Pembuat paket juga dapat memutuskan untuk tidak mendukungnya, jika mereka tidak melihat penggunaan untuk mengimpor * dari paket mereka. Sebagai contoh, berkas sound/effects/__init__.py dapat berisi kode berikut:
 
-# 8. Membandingkan Urutan Sequences dan Jenis Lainnya
-Objek urutan sequence biasanya dapat dibandingkan dengan objek lain dengan jenis urutan yang sama. Perbandingan menggunakan pengurutan 
-lexicographical: pertama dua item pertama dibandingkan, dan jika mereka berbeda ini menentukan hasil perbandingan; jika mereka sama, 
-dua item berikutnya dibandingkan, dan seterusnya, sampai urutan mana pun habis. Jika dua item yang akan dibandingkan adalah urutannya 
-sendiri dari jenis yang sama, perbandingan leksikografis dilakukan secara rekursif. Jika semua item dari dua urutan membandingkan hasilnya sama, 
-urutannya dianggap sama. Jika satu urutan adalah sub-urutan awal dari yang lain, urutan yang lebih pendek adalah yang lebih kecil (lebih pendek).
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar10.jpg"/>
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu03/gambar/gambar12.jpg"/>
+# b. Referensi Intra-paket
+Ketika paket disusun menjadi subpaket (seperti pada paket sound pada contoh), Anda dapat menggunakan impor absolut untuk merujuk pada submodul paket saudara kandung. Misalnya, jika modul sound.filters.vocoder perlu menggunakan modul echo dalam paket sound.effects, ia dapat menggunakan from sound.effects import echo.
 
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar11.jpg"/>
 
-
-
+# c. Paket di Beberapa Direktori
+Paket mendukung satu atribut khusus lagi, __path__. Ini diinisialisasi menjadi daftar yang berisi nama direktori yang menyimpan file paket: __init__.py sebelum kode dalam file tersebut dieksekusi. Variabel ini dapat dimodifikasi; hal itu memengaruhi pencarian modul dan subpackage di masa depan yang terkandung dalam paket.
