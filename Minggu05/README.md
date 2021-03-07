@@ -1,76 +1,55 @@
 # workshop-python
-<h2>Minggu 04</h2>
+<h2>Minggu 05</h2>
 <b>Nama : Yusuf Nur Rahman Wahid</b></br>
 <b>NIM : 185410039</b>
 
-# Modul Pada Python
-Jika Anda berhenti dari interpreter Python dan memasukkannya lagi, definisi yang Anda buat (fungsi dan variabel) akan hilang. Karena itu, jika Anda ingin menulis program yang agak lebih panjang, Anda lebih baik menggunakan editor teks untuk menyiapkan input bagi penerjemah dan menjalankannya dengan file itu sebagai input. Ini dikenal sebagai membuat script. Saat program Anda menjadi lebih panjang, Anda mungkin ingin membaginya menjadi beberapa file untuk pengelolaan yang lebih mudah. Anda mungkin juga ingin menggunakan fungsi praktis yang Anda tulis di beberapa program tanpa menyalin definisi ke setiap program.
+# Input/Output Pada Python
+Ada beberapa cara untuk mempresentasikan keluaran suatu program; data dapat dicetak dalam bentuk yang dapat dibaca manusia, atau ditulis ke berkas untuk digunakan di masa mendatang. Bab ini akan membahas beberapa kemungkinan.
 
-Modul adalah file yang berisi definisi dan pernyataan Python. Nama berkas adalah nama modul dengan akhiran .py diakhirnya. Dalam sebuah modul, nama modul (sebagai string) tersedia sebagai nilai variabel global __name__. Misalnya, gunakan editor teks favorit Anda untuk membuat bernama bernama fibo.py di direktori saat ini dengan konten berikut
+# 1. Pemformatan Keluaran yang Lebih Menarik
+Sejauh ini kami telah menemukan dua cara penulisan nilai: expression statements dan fungsi print(). (Cara ketiga menggunakan write() metode objek berkas; berkas standar keluaran dapat dirujuk sebagai sys.stdout.
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar1.jpg"/>
+Fungsi str() dimaksudkan untuk mengembalikan representasi nilai-nilai yang terbaca oleh manusia, sementara repr() dimaksudkan untuk menghasilkan representasi yang dapat dibaca oleh penerjemah (atau akan memaksa SyntaxError jika tidak ada sintaks yang setara). Untuk objek yang tidak memiliki representasi khusus untuk konsumsi manusia, str() akan mengembalikan nilai yang sama dengan repr(). Banyak nilai, seperti angka atau struktur seperti daftar dan kamus, memiliki representasi yang sama menggunakan kedua fungsi tersebut. String, khususnya, memiliki dua representasi berbeda.
 
-# 1. Lebih lanjut tentang Modul
-Modul dapat berisi pernyataan yang dapat dieksekusi serta definisi fungsi. Pernyataan ini dimaksudkan untuk menginisialisasi modul. Mereka dieksekusi hanya first kali nama modul ditemui dalam pernyataan impor. 1 (Mereka juga dijalankan jika file dieksekusi sebagai skrip.) Modul dapat mengimpor modul lain. Biasanya, tetapi tidak diperlukan untuk menempatkan semua pernyataan import di awal modul (atau skrip, dalam hal ini). Nama-nama modul yang diimpor ditempatkan di tabel simbol global modul impor.
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar1.jpg"/>
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar2.jpg"/>
+# a. Literal String Terformat
+Formatted string literals (juga disebut f-string) memungkinkan Anda menyertakan nilai ekspresi Python di dalam string dengan mengawali string dengan f atau F dan menulis ekspresi sebagai {expression}.
 
-Ini mengimpor semua nama kecuali yang dimulai dengan garis bawah (_). dalam kebanyakan kasus, programmer Python tidak menggunakan fasilitas ini karena ia memperkenalkan sekumpulan nama yang tidak diketahui ke dalam interpreter, mungkin menyembunyikan beberapa hal yang sudah Anda definisikan_
+Penentu format opsional dapat mengikuti ekspresi. Ini memungkinkan kontrol yang lebih besar atas bagaimana nilai diformat
 
-# a. Mengoperasikan modul sebagai skrip
-Ketika Anda mengoperasikan modul Python dengan
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar2.jpg"/>
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar3.jpg"/>
+# b. Metode String format()
+Penggunaan dasar metode str.format() terlihat seperti ini:
 
-kode dalam modul akan dieksekusi, sama seperti jika Anda mengimpornya, tetapi dengan __name__ diatur ke "__main__". Itu berarti bahwa dengan menambahkan kode ini di akhir modul Anda
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar3.jpg"/>
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar4.jpg"/>
+# c. Pemformatan String Manual
+Inilah tabel kotak dan kubus yang sama, yang diformat secara manual:
 
-# b. Jalur Pencarian Modul
-Ketika sebuah modul bernama spam diimpor, interpreter pertama-tama mencari modul bawaan dengan nama itu. Jika tidak ditemukan, ia kemudian mencari berkas bernama spam.py dalam daftar direktori yang diberikan oleh variabel sys.path. sys.path diinisialisasi dari lokasi ini:
--	Direktori yang berisi skrip masukan (atau direktori saat ini ketika tidak ada file ditentukan).
--	PYTHONPATH (daftar nama direktori, dengan sintaksis yang sama dengan variabel shell PATH).
--	Bawaan yang bergantung pada instalasi.
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar4.jpg"/>
 
-# c. Berkas Python "Compiled"
-Untuk mempercepat memuat modul, Python menyimpan cache versi terkompilasi dari setiap modul di direktori __pycache__ dengan nama module. version.pyc, di mana versi menyandikan format berkas terkompilasi; umumnya berisi nomor versi Python. Misalnya, dalam rilis CPython 3.3 versi yang dikompilasi dari spam.py akan di-cache sebagai __pycache__/spam.cpython-33.pyc. Konvensi penamaan ini memungkinkan modul yang dikompilasi dari rilis yang beragam dan versi Python yang berbeda untuk hidup berdampingan.
+# d. Pemformatan string lama
+Operator% (modulo) juga dapat digunakan untuk pemformatan string. Diberikan nilai% 'string', contoh% dalam string diganti dengan nol atau lebih elemen nilai. Operasi ini umumnya dikenal sebagai interpolasi string. Sebagai contoh:
 
-Python tidak memeriksa cache dalam dua keadaan. Pertama, selalu mengkompilasi ulang dan tidak menyimpan hasil untuk modul yang dimuat langsung dari baris perintah. Kedua, itu tidak memeriksa cache jika tidak ada modul sumber. Untuk mendukung distribusi non-sumber (dikompilasi saja), modul yang dikompilasi harus ada di direktori sumber, dan tidak boleh ada modul sumber.
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar5.jpg"/>
 
-# 2. Modul Standar
-Python dilengkapi dengan pustaka modul standar, yang dijelaskan dalam dokumen terpisah, Referensi Pustaka Python ("Library Reference" selanjutnya). Beberapa modul dibangun ke dalam interpreter; ini menyediakan akses ke operasi yang bukan bagian dari inti bahasa tetapi tetap dibangun, baik untuk efisiensi atau untuk menyediakan akses ke sistem operasi primitif seperti pemanggilan sistem. Himpunan modul tersebut adalah opsi konfigurasi yang juga tergantung pada platform yang mendasarinya. Sebagai contoh, modul winreg hanya disediakan pada sistem Windows. Satu modul tertentu patut mendapat perhatian: sys, yang dibangun ke dalam setiap interpreter Python. Variabel sys.ps1 dan sys.ps2 menentukan string yang digunakan sebagai prompt primer dan sekunder.
+# 2. Membaca dan Menulis Berkas
+open() mengembalikan sebuah file object, dan paling umum digunakan dengan dua argumen: open(filename, mode).
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar5.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar6.jpg"/>
 
-Kedua variabel ini hanya ditentukan jika interpreter dalam mode interaktif.
+Argumen pertama adalah string yang berisi nama file. Argumen kedua adalah string lain yang berisi beberapa karakter yang menggambarkan cara berkas akan digunakan. mode dapat 'r' ketika file hanya akan dibaca, 'w' untuk hanya menulis (berkas yang ada dengan nama yang sama akan dihapus), dan 'a' membuka berkas untuk ditambahkan; setiap data yang ditulis ke file secara otomatis ditambahkan ke bagian akhir. 'r+' membuka berkas untuk membaca dan menulis. Argumen mode adalah opsional; 'r' akan diasumsikan jika dihilangkan.
 
-# 3. Fungsi dir()
-Fungsi bawaan dir() digunakan untuk mencari tahu nama-nama yang ditentukan oleh modul. Ia mengembalikan list string yang diurutkan:
+# a. Metode Objek Berkas
+Untuk membaca konten file, panggil f.read(size), yang membaca sejumlah kuantitas data dan mengembalikannya sebagai string (dalam mode teks) atau objek byte (dalam mode biner). size adalah argumen numerik opsional. Ketika size dihilangkan atau negatif, seluruh isi file akan dibaca dan dikembalikan; itu masalah Anda jika file tersebut dua kali lebih besar dari memori mesin Anda. Kalau tidak, paling banyak size karakter (dalam mode teks) atau size byte (dalam mode biner) dibaca dan dikembalikan. Jika akhir file telah tercapai, f.read() akan mengembalikan string kosong ('').
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar6.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar7.jpg"/>
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar7.jpg"/>
+# b. Menyimpan data terstruktur dengan json
+String dapat dengan mudah ditulis dan dibaca dari file. Angka membutuhkan sedikit usaha, karena metode read() hanya mengembalikan string, yang harus diteruskan ke fungsi seperti int(), yang mengambil string seperti '123' dan mengembalikan nilai numerik 123. Ketika Anda ingin menyimpan tipe data yang lebih kompleks seperti daftar list dan dictionary bersarang, penguraian dan pembuatan serialisasi dengan tangan menjadi rumit.
+Jika Anda memiliki objek x, Anda dapat melihat representasi string JSON dengan baris kode sederhana:
 
-dir() tidak mencantumkan nama fungsi dan variabel bawaan. Jika Anda ingin daftar itu, mereka didefinisikan dalam modul standar builtins:
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar8.jpg"/>
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar8.jpg"/>
-
-# 4. Paket
-Paket adalah cara penataan namespace modul Python dengan menggunakan "dotted module names". Sebagai contoh, nama modul A.B menetapkan submodule bernama B dalam sebuah paket bernama A. Sama seperti penggunaan modul menyelamatkan penulis modul yang berbeda dari harus khawatir tentang nama variabel global masing-masing, penggunaan nama modul bertitik menyelamatkan penulis paket multi-modul seperti NumPy atau Pillow dari harus khawatir tentang nama modul masing-masing .
-
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar9.jpg"/>
-
-Saat mengimpor paket, Python mencari melalui direktori pada sys.path mencari subdirektori paket.
-
-# a. Mengimpor * Dari Paket
-Satu-satunya solusi adalah bagi pembuat paket untuk memberikan indeks paket secara eksplisit. Pernyataan import menggunakan konvensi berikut: jika suatu paket punya kode __init __.py yang mendefinisikan daftar bernama __all__, itu diambil sebagai daftar nama modul yang harus diimpor ketika from package import * ditemukan. Terserah pembuat paket untuk tetap memperbarui daftar ini ketika versi baru dari paket dirilis. Pembuat paket juga dapat memutuskan untuk tidak mendukungnya, jika mereka tidak melihat penggunaan untuk mengimpor * dari paket mereka. Sebagai contoh, berkas sound/effects/__init__.py dapat berisi kode berikut:
-
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar10.jpg"/>
-
-# b. Referensi Intra-paket
-Ketika paket disusun menjadi subpaket (seperti pada paket sound pada contoh), Anda dapat menggunakan impor absolut untuk merujuk pada submodul paket saudara kandung. Misalnya, jika modul sound.filters.vocoder perlu menggunakan modul echo dalam paket sound.effects, ia dapat menggunakan from sound.effects import echo.
-
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu04/gambar/gambar11.jpg"/>
-
-# c. Paket di Beberapa Direktori
-Paket mendukung satu atribut khusus lagi, __path__. Ini diinisialisasi menjadi daftar yang berisi nama direktori yang menyimpan file paket: __init__.py sebelum kode dalam file tersebut dieksekusi. Variabel ini dapat dimodifikasi; hal itu memengaruhi pencarian modul dan subpackage di masa depan yang terkandung dalam paket.
