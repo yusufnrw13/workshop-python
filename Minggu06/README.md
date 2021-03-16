@@ -3,53 +3,49 @@
 <b>Nama : Yusuf Nur Rahman Wahid</b></br>
 <b>NIM : 185410039</b>
 
-# Input/Output Pada Python
-Ada beberapa cara untuk mempresentasikan keluaran suatu program; data dapat dicetak dalam bentuk yang dapat dibaca manusia, atau ditulis ke berkas untuk digunakan di masa mendatang. Bab ini akan membahas beberapa kemungkinan.
+# Kesalahan errors dan Pengecualian exceptions
+Sampai sekarang pesan kesalahan belum lebih dari yang disebutkan, tetapi jika Anda telah mencoba contohnya, Anda mungkin telah melihat beberapa. Ada (setidaknya) dua jenis kesalahan yang dapat dibedakan: syntax errors dan exceptions.
 
-# 1. Pemformatan Keluaran yang Lebih Menarik
-Sejauh ini kami telah menemukan dua cara penulisan nilai: expression statements dan fungsi print(). (Cara ketiga menggunakan write() metode objek berkas; berkas standar keluaran dapat dirujuk sebagai sys.stdout.
+# 1. Kesalahan Sintaksis
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar1.jpg"/>
 
-Fungsi str() dimaksudkan untuk mengembalikan representasi nilai-nilai yang terbaca oleh manusia, sementara repr() dimaksudkan untuk menghasilkan representasi yang dapat dibaca oleh penerjemah (atau akan memaksa SyntaxError jika tidak ada sintaks yang setara). Untuk objek yang tidak memiliki representasi khusus untuk konsumsi manusia, str() akan mengembalikan nilai yang sama dengan repr(). Banyak nilai, seperti angka atau struktur seperti daftar dan kamus, memiliki representasi yang sama menggunakan kedua fungsi tersebut. String, khususnya, memiliki dua representasi berbeda.
+Pengurai parser mengulangi baris yang menyinggung dan menampilkan sedikit 'arrow' yang menunjuk pada titik paling awal di baris di mana kesalahan terdeteksi. Kesalahan disebabkan oleh (atau setidaknya terdeteksi pada) token preceding panah: dalam contoh, kesalahan terdeteksi pada fungsi print(), karena titik dua (':')) hilang sebelum itu. Nama file dan nomor baris dicetak sehingga Anda tahu ke mana harus mencari kalau-kalau masukan berasal dari skrip.
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar1.jpg"/>
+# 2. Pengecualian
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar2.jpg"/>
 
-# a. Literal String Terformat
-Formatted string literals (juga disebut f-string) memungkinkan Anda menyertakan nilai ekspresi Python di dalam string dengan mengawali string dengan f atau F dan menulis ekspresi sebagai {expression}.
+Baris terakhir dari pesan kesalahan menunjukkan apa yang terjadi. Pengecualian ada berbagai jenis yang berbeda, dan tipe dicetak sebagai bagian dari pesan: tipe dalam contoh adalah ZeroDivisionError, NameError dan TypeError. String yang dicetak sebagai jenis pengecualian adalah nama pengecualian bawaan yang terjadi. Ini berlaku untuk semua pengecualian bawaan, tetapi tidak harus sama untuk pengecualian yang dibuat pengguna (meskipun ini adalah konvensi yang bermanfaat). Nama pengecualian standar adalah pengidentifikasi bawaan (bukan kata kunci yang dipesan reserved keyword).
 
-Penentu format opsional dapat mengikuti ekspresi. Ini memungkinkan kontrol yang lebih besar atas bagaimana nilai diformat
+# 3. Menangani Pengecualian
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar3.jpg"/>
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar2.jpg"/>
+Pernyataan try berfungsi sebagai berikut.
+•	Pertama, try clause (pernyataan(-pernyataan) di antara kata kunci try dan except) dieksekusi.
+•	Jika tidak ada pengecualian terjadi, except clause dilewati dan eksekusi pernyataan :keyword: try selesai.
+•	Jika pengecualian terjadi selama eksekusi klausa try, sisa klausa dilewati. Kemudian jika jenisnya cocok dengan pengecualian yang dinamai dengan kata kunci exception, klausa except dioperasikan, dan kemudian eksekusi berlanjut setelah pernyataan try.
+•	Jika terjadi pengecualian yang tidak cocok dengan pengecualian yang disebutkan dalam klausa kecuali, itu diteruskan ke luar pernyataan try; jika tidak ada penangan yang ditemukan, ini adalah unhandled exception dan eksekusi berhenti dengan pesan seperti yang ditunjukkan di atas.
 
-# b. Metode String format()
-Penggunaan dasar metode str.format() terlihat seperti ini:
+# 4. Memunculkan Pengecualian
+Pernyataan raise memungkinkan programmer untuk memaksa pengecualian yang ditentukan terjadi. Sebagai contoh:
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar3.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar4.jpg"/>
 
-# c. Pemformatan String Manual
-Inilah tabel kotak dan kubus yang sama, yang diformat secara manual:
+# 5. Pengecualian yang ditentukan Pengguna
+Kelas pengecualian dapat didefinisikan yang melakukan apa saja yang dapat dilakukan oleh kelas lain, tetapi biasanya tetap sederhana, seringkali hanya menawarkan sejumlah atribut yang memungkinkan informasi tentang kesalahan diekstraksi oleh penangan sebagai pengecualian. Saat membuat modul yang dapat menimbulkan beberapa kesalahan berbeda, praktik yang umum adalah membuat kelas dasar untuk pengecualian yang ditentukan oleh modul itu, dan mensubkelaskan kelas itu untuk membuat kelas pengecualian khusus untuk kondisi kesalahan yang berbeda:
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar4.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar5.jpg"/>
 
-# d. Pemformatan string lama
-Operator% (modulo) juga dapat digunakan untuk pemformatan string. Diberikan nilai% 'string', contoh% dalam string diganti dengan nol atau lebih elemen nilai. Operasi ini umumnya dikenal sebagai interpolasi string. Sebagai contoh:
+# 6. Mendefinisikan Tindakan Pembersihan
+Pernyataan try memiliki klausa opsional lain yang dimaksudkan untuk menentukan tindakan pembersihan yang harus dijalankan dalam semua keadaan. Sebagai contoh:
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar5.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar6.jpg"/>
 
-# 2. Membaca dan Menulis Berkas
-open() mengembalikan sebuah file object, dan paling umum digunakan dengan dua argumen: open(filename, mode).
+# 7. Tindakan Pembersihan yang Sudah Ditentukan
+Beberapa objek mendefinisikan tindakan pembersihan standar yang harus dilakukan ketika objek tidak lagi diperlukan, terlepas dari apakah operasi menggunakan objek berhasil atau gagal. Lihatlah contoh berikut, yang mencoba membuka berkas dan mencetak isinya ke layar.
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar6.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar7.jpg"/>
 
-Argumen pertama adalah string yang berisi nama file. Argumen kedua adalah string lain yang berisi beberapa karakter yang menggambarkan cara berkas akan digunakan. mode dapat 'r' ketika file hanya akan dibaca, 'w' untuk hanya menulis (berkas yang ada dengan nama yang sama akan dihapus), dan 'a' membuka berkas untuk ditambahkan; setiap data yang ditulis ke file secara otomatis ditambahkan ke bagian akhir. 'r+' membuka berkas untuk membaca dan menulis. Argumen mode adalah opsional; 'r' akan diasumsikan jika dihilangkan.
+Masalah dengan kode ini adalah bahwa ia membiarkan berkas terbuka untuk jumlah waktu yang tidak ditentukan setelah bagian kode ini selesai dieksekusi. Ini bukan masalah dalam skrip sederhana, tetapi bisa menjadi masalah untuk aplikasi yang lebih besar. Pernyataan with memungkinkan objek seperti berkas digunakan dengan cara yang memastikan mereka selalu dibersihkan secepatnya dan dengan benar.
 
-# a. Metode Objek Berkas
-Untuk membaca konten file, panggil f.read(size), yang membaca sejumlah kuantitas data dan mengembalikannya sebagai string (dalam mode teks) atau objek byte (dalam mode biner). size adalah argumen numerik opsional. Ketika size dihilangkan atau negatif, seluruh isi file akan dibaca dan dikembalikan; itu masalah Anda jika file tersebut dua kali lebih besar dari memori mesin Anda. Kalau tidak, paling banyak size karakter (dalam mode teks) atau size byte (dalam mode biner) dibaca dan dikembalikan. Jika akhir file telah tercapai, f.read() akan mengembalikan string kosong ('').
-
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar7.jpg"/>
-
-# b. Menyimpan data terstruktur dengan json
-String dapat dengan mudah ditulis dan dibaca dari file. Angka membutuhkan sedikit usaha, karena metode read() hanya mengembalikan string, yang harus diteruskan ke fungsi seperti int(), yang mengambil string seperti '123' dan mengembalikan nilai numerik 123. Ketika Anda ingin menyimpan tipe data yang lebih kompleks seperti daftar list dan dictionary bersarang, penguraian dan pembuatan serialisasi dengan tangan menjadi rumit.
-Jika Anda memiliki objek x, Anda dapat melihat representasi string JSON dengan baris kode sederhana:
-
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu05/gambar/gambar8.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar8.jpg"/>
 
