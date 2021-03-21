@@ -3,49 +3,98 @@
 <b>Nama : Yusuf Nur Rahman Wahid</b></br>
 <b>NIM : 185410039</b>
 
-# Kesalahan errors dan Pengecualian exceptions
-Sampai sekarang pesan kesalahan belum lebih dari yang disebutkan, tetapi jika Anda telah mencoba contohnya, Anda mungkin telah melihat beberapa. Ada (setidaknya) dua jenis kesalahan yang dapat dibedakan: syntax errors dan exceptions.
+# OOP PYTHON
 
-# 1. Kesalahan Sintaksis
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar1.jpg"/>
+# 1. Classes
 
-Pengurai parser mengulangi baris yang menyinggung dan menampilkan sedikit 'arrow' yang menunjuk pada titik paling awal di baris di mana kesalahan terdeteksi. Kesalahan disebabkan oleh (atau setidaknya terdeteksi pada) token preceding panah: dalam contoh, kesalahan terdeteksi pada fungsi print(), karena titik dua (':')) hilang sebelum itu. Nama file dan nomor baris dicetak sehingga Anda tahu ke mana harus mencari kalau-kalau masukan berasal dari skrip.
+Classes atau kelas-kelas menyediakan sarana untuk menggabungkan data dan fungsionalitas bersama. Membuat sebuah class baru menghasilkan objek dengan type baru, memungkinkan dibuat instance baru dari tipe itu. Setiap instance dari class dapat memiliki atribut yang melekat padanya untuk mempertahankan kondisinya. Instance dari sebuah class juga dapat memiliki metode (ditentukan oleh class) untuk memodifikasi kondisinya.
+# a. Sepatah Kata Tentang Nama dan Objek
 
-# 2. Pengecualian
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar2.jpg"/>
+Objek memiliki individualitas, dan banyak nama (dalam berbagai lingkup) dapat terikat ke objek yang sama. Ini dikenal sebagai aliasing dalam bahasa lain. Ini biasanya tidak dihargai pada pandangan pertama pada Python, dan dapat diabaikan dengan aman ketika berhadapan dengan tipe dasar yang tidak dapat diubah (angka, string, tuple).
 
-Baris terakhir dari pesan kesalahan menunjukkan apa yang terjadi. Pengecualian ada berbagai jenis yang berbeda, dan tipe dicetak sebagai bagian dari pesan: tipe dalam contoh adalah ZeroDivisionError, NameError dan TypeError. String yang dicetak sebagai jenis pengecualian adalah nama pengecualian bawaan yang terjadi. Ini berlaku untuk semua pengecualian bawaan, tetapi tidak harus sama untuk pengecualian yang dibuat pengguna (meskipun ini adalah konvensi yang bermanfaat). Nama pengecualian standar adalah pengidentifikasi bawaan (bukan kata kunci yang dipesan reserved keyword).
+# b. Lingkup Python dan Namespaces
 
-# 3. Menangani Pengecualian
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar3.jpg"/>
+Sebuah namespace adalah pemetaan dari nama ke objek. Sebagian besar ruang nama namespace saat ini diimplementasikan sebagai kamus dictionary Python, tetapi itu biasanya tidak terlihat dengan cara apa pun (kecuali untuk kinerja), dan itu mungkin berubah di masa depan. Contoh ruang nama namespace adalah: himpunan nama bawaan (berisi fungsi seperti abs(), dan nama pengecualian bawaan); nama-nama global dalam sebuah modul; dan nama-nama lokal dalam pemanggilan fungsi. Dalam arti himpunan atribut suatu objek juga membentuk namespace. Hal penting yang perlu diketahui tentang ruang nama namespace adalah sama sekali tidak ada hubungan antara nama dalam ruang nama namespace yang berbeda; misalnya, dua modul yang berbeda dapat mendefinisikan fungsi maximize tanpa kebingungan --- pengguna modul harus memberikan awalan dengan nama modul.
 
-Pernyataan try berfungsi sebagai berikut.
-•	Pertama, try clause (pernyataan(-pernyataan) di antara kata kunci try dan except) dieksekusi.
-•	Jika tidak ada pengecualian terjadi, except clause dilewati dan eksekusi pernyataan :keyword: try selesai.
-•	Jika pengecualian terjadi selama eksekusi klausa try, sisa klausa dilewati. Kemudian jika jenisnya cocok dengan pengecualian yang dinamai dengan kata kunci exception, klausa except dioperasikan, dan kemudian eksekusi berlanjut setelah pernyataan try.
-•	Jika terjadi pengecualian yang tidak cocok dengan pengecualian yang disebutkan dalam klausa kecuali, itu diteruskan ke luar pernyataan try; jika tidak ada penangan yang ditemukan, ini adalah unhandled exception dan eksekusi berhenti dengan pesan seperti yang ditunjukkan di atas.
 
-# 4. Memunculkan Pengecualian
-Pernyataan raise memungkinkan programmer untuk memaksa pengecualian yang ditentukan terjadi. Sebagai contoh:
+# 1. Contoh Lingkup Scopes dan Ruang Nama Namespaces
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar4.jpg"/>
+Ini adalah contoh yang menunjukkan cara mereferensikan lingkup scopes dan ruang nama namespaces yang berbeda, dan bagaimana global dan nonlocal memengaruhi pengikatan variabel:
 
-# 5. Pengecualian yang ditentukan Pengguna
-Kelas pengecualian dapat didefinisikan yang melakukan apa saja yang dapat dilakukan oleh kelas lain, tetapi biasanya tetap sederhana, seringkali hanya menawarkan sejumlah atribut yang memungkinkan informasi tentang kesalahan diekstraksi oleh penangan sebagai pengecualian. Saat membuat modul yang dapat menimbulkan beberapa kesalahan berbeda, praktik yang umum adalah membuat kelas dasar untuk pengecualian yang ditentukan oleh modul itu, dan mensubkelaskan kelas itu untuk membuat kelas pengecualian khusus untuk kondisi kesalahan yang berbeda:
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar1.jpg"/>
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar5.jpg"/>
+# c. Pandangan Pertama tentang Kelas
+Kelas memperkenalkan sedikit sintaks baru, tiga tipe objek baru, dan beberapa semantik baru
 
-# 6. Mendefinisikan Tindakan Pembersihan
-Pernyataan try memiliki klausa opsional lain yang dimaksudkan untuk menentukan tindakan pembersihan yang harus dijalankan dalam semua keadaan. Sebagai contoh:
+# 1.	Sintaks Definisi Kelas
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar2.jpg"/>
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar6.jpg"/>
+Definisi kelas, seperti definisi fungsi (pernyataan def) harus dieksekusi sebelum mereka memiliki efek. (Anda dapat menempatkan definisi kelas di cabang dari pernyataan if, atau di dalam suatu fungsi.)
 
-# 7. Tindakan Pembersihan yang Sudah Ditentukan
-Beberapa objek mendefinisikan tindakan pembersihan standar yang harus dilakukan ketika objek tidak lagi diperlukan, terlepas dari apakah operasi menggunakan objek berhasil atau gagal. Lihatlah contoh berikut, yang mencoba membuka berkas dan mencetak isinya ke layar.
+# 2. Objek Kelas Class Objects
+Objek kelas mendukung dua jenis operasi: referensi atribut dan instansiasi.
+Attribute references menggunakan sintaks standar yang digunakan untuk semua referensi atribut dalam Python: obj.name. Nama atribut yang valid adalah semua nama yang ada di namespace kelas saat objek kelas dibuat. Jadi, jika definisi kelas tampak seperti ini:
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar7.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar3.jpg"/>
 
-Masalah dengan kode ini adalah bahwa ia membiarkan berkas terbuka untuk jumlah waktu yang tidak ditentukan setelah bagian kode ini selesai dieksekusi. Ini bukan masalah dalam skrip sederhana, tetapi bisa menjadi masalah untuk aplikasi yang lebih besar. Pernyataan with memungkinkan objek seperti berkas digunakan dengan cara yang memastikan mereka selalu dibersihkan secepatnya dan dengan benar.
+# 3. Objek Instance
+data attributes sesuai dengan "variabel instan" di Smalltalk, dan "data members" di C++. Atribut data tidak perlu dinyatakan; seperti variabel lokal, mereka muncul ketika mereka pertama kali ditugaskan. Misalnya, jika x adalah turunan dari MyClass yang dibuat di atas, bagian kode berikut akan mencetak nilai 16, tanpa meninggalkan jejak:
 
-<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu06/gambar/gambar8.jpg"/>
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar4.jpg"/>
+
+# 4. Metode Objek
+Biasanya, metode dipanggil tepat setelah itu terikat:
+
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar5.jpg"/>
+
+Dalam contoh MyClass, ini akan mengembalikan string 'hello world'. Namun, tidak perlu memanggil metode segera: x.f adalah metode objek, dan dapat disimpan dan dipanggil di lain waktu. Sebagai contoh:
+
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar6.jpg"/>
+
+# 5. Variabel Kelas dan Instance
+Secara umum, variabel instance adalah untuk data unik untuk setiap instance dan variabel kelas adalah untuk atribut dan metode yang dibagikan oleh semua instance kelas:
+
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar7.jpg"/>
+
+# d. Keterangan acak
+Jika nama atribut yang sama muncul di kedua instance dan di kelas, maka pencarian atribut memprioritaskan instance:
+
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar8.jpg"/>
+
+# e. Pewarisan
+Tentu saja, fitur bahasa tidak akan layak untuk nama "class" tanpa mendukung pewarisan. Sintaks untuk definisi kelas turunan terlihat seperti ini:
+
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar9.jpg"/>
+
+# 1. Pewarisan Berganda
+Python mendukung bentuk pewarisan berganda juga. Definisi kelas dengan beberapa kelas dasar terlihat seperti ini:
+
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar10.jpg"/>
+
+# 1. Variabel Privat
+Variabel instance "Private" yang tidak dapat diakses kecuali dari dalam suatu objek tidak ada dalam Python. Namun, ada konvensi yang diikuti oleh sebagian besar kode Python: nama diawali dengan garis bawah (mis. _spam) harus diperlakukan sebagai bagian non-publik dari API (apakah itu fungsi, metode atau anggota data). Ini harus dianggap sebagai detail implementasi dan dapat berubah tanpa pemberitahuan.
+Name mangling sangat membantu untuk membiarkan subclass menimpa metode tanpa memutus panggilan metode intraclass. Sebagai contoh:
+
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar11.jpg"/>
+
+# g. Barang Sisa Odds and Ends
+Kadang-kadang berguna untuk memiliki tipe data yang mirip dengan "record" Pascal atau "struct" C, menyatukan beberapa item data bernama. Definisi kelas kosong akan menghasilkan hal tersebut dengan baik:
+
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar12.jpg"/>
+
+# h. Iterators
+Sekarang Anda mungkin telah memperhatikan bahwa sebagian besar objek penampung container dapat dibuat perulangan menggunakan pernyataan for:
+
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar13.jpg"/>
+
+# i. Pembangkit Generator
+Generator adalah alat sederhana dan kuat untuk membuat iterator. Mereka ditulis seperti fungsi biasa tetapi menggunakan pernyataan hasil kapan pun mereka ingin mengembalikan data. Setiap kali next () dipanggil, generator melanjutkan di mana ia tinggalkan (ia mengingat semua nilai data dan pernyataan mana yang terakhir dieksekusi). Sebuah contoh menunjukkan bahwa generator dapat dibuat dengan sangat mudah:
+
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar14.jpg"/>
+
+# j. Ekspresi Pembangkit Generator
+Beberapa pembangkit generators sederhana dapat dikodekan secara ringkas sebagai ekspresi menggunakan sintaksis yang mirip dengan pemahaman daftar list comprehensions tetapi dengan tanda kurung bukan dengan tanda kurung siku. Ungkapan-ungkapan ini dirancang untuk situasi di mana generator digunakan segera oleh fungsi penutup. Ekspresi generator lebih kompak tetapi kurang fleksibel daripada definisi generator penuh dan cenderung lebih ramah memori daripada pemahaman daftar list comprehensions setara.
+Contoh:
+
+<img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu07/gambar/gambar15.jpg"/>
 
