@@ -66,11 +66,11 @@ Modul: mod:doctest menyediakan alat untuk memindai modul dan memvalidasi tes yan
 <img src="https://github.com/yusufnrw13/workshop-python/blob/master/Minggu08/gambar/gambar11.jpg"/>
 
 # 12. Dilengkapi Baterai
-Python memiliki filosofi "dilengkapi baterai". Ini paling baik dilihat melalui kemampuan yang canggih dan kuat robust dengan dukungan paket-paket yang lebih besar. Sebagai contoh:
-•	Modul xmlrpc.client dan xmlrpc.server membuat penerapan panggilan prosedur jarak jauh menjadi tugas yang hampir sepele. Terlepas dari nama-nama modul, tidak diperlukan pengetahuan atau penanganan XML secara langsung.
-•	Paket email adalah pustaka untuk mengelola pesan email, termasuk MIME dan lainnya RFC 2822 dokumen pesan berbasis. Tidak seperti smtplib dan poplib yang benar-benar mengirim dan menerima pesan, paket email memiliki toolset lengkap untuk membangun atau mendekodekan struktur pesan kompleks (termasuk lampiran) dan untuk mengimplementasikan pengkodean internet dan protokol header.
-•	Paket json menyediakan dukungan kuat untuk mengurai format pertukaran data populer ini. Modul csv mendukung pembacaan dan penulisan berkas secara langsung dalam format Nilai Terpisah-Koma atau CSV, umumnya didukung oleh database dan spreadsheet. Pemrosesan XML didukung oleh paket xml.etree.ElementTree, xml.dom dan xml.sax. Bersama-sama, modul dan paket ini sangat menyederhanakan pertukaran data antara aplikasi Python dan alat lainnya.
-•	Modul sqlite3 adalah pembungkus untuk pustaka basis data SQLite, menyediakan basis data persisten yang dapat diperbarui dan diakses menggunakan sintaks SQL yang sedikit tidak standar.
+Python memiliki filosofi "dilengkapi baterai". Ini paling baik dilihat melalui kemampuan yang canggih dan kuat robust dengan dukungan paket-paket yang lebih besar. Sebagai contoh:</br>
+•	Modul xmlrpc.client dan xmlrpc.server membuat penerapan panggilan prosedur jarak jauh menjadi tugas yang hampir sepele. Terlepas dari nama-nama modul, tidak diperlukan pengetahuan atau penanganan XML secara langsung.</br>
+•	Paket email adalah pustaka untuk mengelola pesan email, termasuk MIME dan lainnya RFC 2822 dokumen pesan berbasis. Tidak seperti smtplib dan poplib yang benar-benar mengirim dan menerima pesan, paket email memiliki toolset lengkap untuk membangun atau mendekodekan struktur pesan kompleks (termasuk lampiran) dan untuk mengimplementasikan pengkodean internet dan protokol header.</br>
+•	Paket json menyediakan dukungan kuat untuk mengurai format pertukaran data populer ini. Modul csv mendukung pembacaan dan penulisan berkas secara langsung dalam format Nilai Terpisah-Koma atau CSV, umumnya didukung oleh database dan spreadsheet. Pemrosesan XML didukung oleh paket xml.etree.ElementTree, xml.dom dan xml.sax. Bersama-sama, modul dan paket ini sangat menyederhanakan pertukaran data antara aplikasi Python dan alat lainnya.</br>
+•	Modul sqlite3 adalah pembungkus untuk pustaka basis data SQLite, menyediakan basis data persisten yang dapat diperbarui dan diakses menggunakan sintaks SQL yang sedikit tidak standar.</br>
 •	Internasionalisasi didukung oleh sejumlah modul termasuk paket gettext, locale, dan codecs.
 
 
